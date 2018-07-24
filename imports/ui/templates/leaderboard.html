@@ -1,0 +1,12 @@
+<template name="leaderboard">
+    <ul>
+        {{#each player}}
+        <li class="player {{selectedClass}}">
+            {{name}} : {{score}}
+        </li>
+        {{/each}}
+    </ul>
+    <p class="total">
+        Total: {{count}}
+    </p>
+</template>
