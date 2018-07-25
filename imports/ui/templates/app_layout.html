@@ -1,0 +1,12 @@
+<template name="applicationLayout">
+    <div class="container">
+        <div class="row">
+            <div >
+                {{> navbar}}
+                {{> yield}}
+                {{> footer}}
+            </div>
+        </div>
+    </div>
+    {{> scripts}}
+</template>

@@ -1,12 +1,43 @@
 body {
-  padding: 10px;
+  padding: 0px;
   font-family: sans-serif;
 }
+
+.navbar-nav a{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 25px;
+    color: white !important;
+}
+
+.navbar-nav li:hover{
+    background-color: #0f7889;
+}
+
  .player{
-   color:red;
    font-weight: bold;
+   list-style-type: none;
+   cursor: pointer;
  }
 
+ .player img{
+     width: 9%;
+     border-radius: 50%;
+ }
+
+.mod-title{
+    text-align: center;
+    margin: 30px 30px;
+}
 .selected{
-    background-color: yellow;
+    background-color: #009999;
+    color: white;
+}
+
+.img-logo{
+    width: 100px;
+}
+
+.players-list{
+    padding-left: 40px;
+    padding-right: 40px;
 }
