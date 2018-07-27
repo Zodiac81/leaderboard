@@ -1,1 +1,1 @@
-import '../imports/api/playerslist.js';
+import '../imports/api/players.js';

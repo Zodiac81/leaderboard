@@ -1,22 +1,28 @@
 <template name="leaderboard">
-    <p class="h3 mod-title">{{title}}</p>
-    <ul class="players-list">
-        {{#each player}}
-        <li class="player {{selectedClass}}">
-            <img src="{{name}}.jpeg" alt="user-icon">
-            {{name}} : {{score}}
-        </li>
-        <hr>
-        {{/each}}
-    </ul>
-    <p class="total">
-        Total: {{count}}
-    </p>
-    {{#if selectedPlayer}}
-        <p>Selected Player: {{selectedPlayer.name}}</p>
-        <hr>
-        <button class="btn btn-primary increment">Give 5 Points</button>
-        <button class="btn btn-danger decrement">Take 5 Points</button>
+    {{#if currentUser}}
+        <p class="h3 mod-title">{{title}}</p>
+        <ul class="players-list">
+            {{#each player}}
+            <li class="player {{selectedClass}}">
+                <img src="{{name}}.jpeg" alt="user-icon">
+                {{name}} : {{score}}
+            </li>
+            <hr>
+            {{/each}}
+        </ul>
+        <p class="total">
+            Total: {{count}}
+        </p>
+
+        {{#if selectedPlayer}}
+            <p class="total">Selected Player: {{selectedPlayer.name}}</p>
+            <hr>
+            <button class="btn btn-primary increment">Give 5 Points</button>
+            <button class="btn btn-danger decrement">Take 5 Points</button>
+            <button class="btn btn-danger remove">Remove Player</button>
+        {{/if}}
+    {{else}}
+        <h3>Please, sign in to able to view players</h3>
     {{/if}}
 </template>
 

@@ -1,3 +1,23 @@
 <template name="addPlayerForm">
-    <p class="h3">{{title}}</p>
+    {{#if currentUser}}
+        <p class="h3">{{title}}</p>
+        <form>
+            <div class="form-group">
+                <label for="playerName">Player name</label>
+                <input type="text" name="playerName" id="playerName">
+            </div>
+            <div class="form-group">
+                <label for="playerName">Player score</label>
+                <input type="number" name="playersScore" id="playersScore">
+            </div>
+            <!--<div class="form-group">-->
+            <!--<label for="playerPhoto">Upload player photo</label>-->
+            <!--<input type="file" class="form-control-file" name="playerPhoto" id="playerPhoto">-->
+            <!--</div>-->
+            <button type="submit" value="Add" id="add-player" class="btn btn-info">Add</button>
+        </form>
+    {{else}}
+        <h3>Please, sign in to able to add new players</h3>
+    {{/if}}
+
 </template>

@@ -1,5 +1,5 @@
 //import { Template } from 'meteor/templating';
-import '../../api/playerslist.js';
+import '../../api/players.js';
 
 // depricated
 // Template.leaderboard.player = function(){
@@ -10,16 +10,26 @@ import '../../api/playerslist.js';
 
 Template.leaderboard.helpers({
     'player': function(){
-        return PlayersList.find({}, { sort: {score: -1, name: 1} });
+        let currentUserId = Meteor.userId();
+        if(Meteor.user().emails[0]['address'] === "admin@gmail.com"){
+            return PlayersList.find({},{ sort: {score: -1, name: 1} });
+        }
+        return PlayersList.find({ createdBy: currentUserId },
+                                { sort: {score: -1, name: 1} });
     },
     'count' : function() {
-        return PlayersList.find().count()
+        let currentUserId = Meteor.userId();
+        if(Meteor.user().emails[0]['address'] === "admin@gmail.com"){
+            return PlayersList.find().count();
+        }
+
+        return PlayersList.find({createdBy: currentUserId}).count();
     },
     'selectedClass': function(){
         let playerId = this._id;
         let selectedPlayer = Session.get('selectedPlayer');
         if(playerId == selectedPlayer){
-            return "selected"
+            return "selected";
         }
     },
     'selectedPlayer' : function () {
@@ -34,15 +44,20 @@ Template.leaderboard.helpers({
 
 Template.leaderboard.events({
     'click .player': function(){
-        let playerId = this._id
+        let playerId = this._id;
         Session.set('selectedPlayer', playerId);
     },
     'click .increment': function(){
         let selectedPlayer = Session.get('selectedPlayer');
-        PlayersList.update({ _id: selectedPlayer }, { $inc: {score:5} });
+        PlayersList.update({ _id: selectedPlayer }, { $inc: {score:5} })
     },
     'click .decrement': function(){
         let selectedPlayer = Session.get('selectedPlayer');
-        PlayersList.update({ _id: selectedPlayer }, { $inc: {score:-5} });
+        PlayersList.update({ _id: selectedPlayer }, { $inc: {score:-5} })
+    },
+    'click .remove': function () {
+        alert('Remove?');
+        let removePlayer = Session.get('selectedPlayer');
+        PlayersList.remove({_id : removePlayer})
     }
 });

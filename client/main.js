@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Mongo } from 'meteor/mongo';
 
-import './routs.js';
+import './config/routs.js';
 
 //import bootstrap css
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -28,7 +28,8 @@ import '../imports/ui/js/addPlayerForm.js';
 
 
 // import collections
-import '../imports/api/playerslist.js'
+import '../imports/api/players.js'
+import '../imports/api/users.js'
 
 
 
